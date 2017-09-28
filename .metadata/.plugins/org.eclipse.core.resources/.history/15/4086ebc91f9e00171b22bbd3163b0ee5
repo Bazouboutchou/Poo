@@ -1,0 +1,42 @@
+package tp1;
+
+public class ArbreBinaire {
+	private Noeud noeud;
+	
+	public ArbreBinaire (int element) {
+		this.noeud = new Noeud (element, null, null);
+	}
+	
+	public void inserer (int element){
+		insererRec (element, noeud);
+	}
+	
+	public Noeud insererRec (int element, Noeud noeud){
+		assert noeud.getElement() == element;
+		if (noeud.getElement() > element){
+			if (noeud.getFg() != null){
+				return insererRec (element, noeud.getFg());							
+			} else  {
+				return new Noeud (element, null, null);
+			}
+		} else {
+			if(noeud.getFd() != null){
+				return insererRec (element, noeud.getFd());							
+			} else{
+				return new Noeud (element, null, null);
+			}
+		}
+	}
+	
+	public void affichage(Noeud a) 
+	{
+	  if (a == null) {
+		  System.out.print("Arbre vide");		  
+	  } else {
+		  System.out.print(a.getElement() + " ");
+		  affichage(a.getFg());
+		  affichage(a.getFd()
+				  );		  
+	  }
+	}
+}
