@@ -57,6 +57,11 @@ public class Image extends Forme {
 	public String toString() {
 		return "Image [formes=" + Arrays.toString(this.formes) + ", originePoint=" + super.getOriginePoint() + "]";
 	}
+
+	@Override
+	public void afficher() {
+		System.out.println("Image [formes=" + Arrays.toString(this.formes) + ", originePoint=" + super.getOriginePoint() + "]");	
+	}
 	
 	
 }

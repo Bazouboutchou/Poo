@@ -24,4 +24,9 @@ public class Segment extends Forme{
 	public String toString() {
 		return "Segment [originePoint=" + super.getOriginePoint() + ", finalPoint=" + this.finalPoint + "]";
 	}
+
+	@Override
+	public void afficher() {
+		System.out.println("Segment [originePoint=" + super.getOriginePoint() + ", finalPoint=" + this.finalPoint + "]");	
+	}
 }

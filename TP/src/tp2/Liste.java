@@ -60,6 +60,18 @@ public class Liste extends Structure {
 		str += "]";
 		return str;
 	}
+	@Override
+	public void afficher() {
+		Maillon tmp = this.tete;
+		String str = "[";
+		while (tmp != null) {
+			str += tmp.getElem() + " ";
+			tmp = tmp.getSuiv();
+		}		
+		str += "]";
+		System.out.println(str);
+		
+	}
 	
 	
 }

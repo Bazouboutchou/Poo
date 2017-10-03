@@ -144,9 +144,37 @@ public class Main {
 			structures[0].inserer(i);
 			structures[1].inserer(i);
 		}
-
 		System.out.println(structures[0]);
 		System.out.println(structures[1]);
+		for (int i = 0; i < 10; ++i){
+			structures[0].supprimer(i);
+			structures[1].supprimer(i);
+		}
+		System.out.println(structures[0]);
+		System.out.println(structures[1]);
+	}
+	
+	public static void testAffichable(){
+		System.out.println("********* Test Affichable **************");
+		Structure structures[] = new Structure [2];
+		structures[0] = new Entier(10);
+		structures[1] = new Liste ();
+		
+		for (int i = 0; i < 10; ++i){
+			structures[0].inserer(i);
+			structures[1].inserer(i);
+		}
+		structures[0].afficher();
+		structures[1].afficher();
+		
+		Forme forme [] = new Forme [3];
+		forme[0] = new Segment(new Point (), new Point(1,1));
+		forme[1] = new Cercle(new Point(1,1), 5);
+		forme[2] = new Image(0);
+		forme[0].afficher();
+		forme[1].afficher();
+		forme[2].afficher();
+		
 	}
 	public static void main(String[] args) {
 		testPoint();
@@ -157,6 +185,7 @@ public class Main {
 		testQuestion5();
 		testQuestion6();
 		testStructure ();
+		testAffichable();
 	}
 
 }

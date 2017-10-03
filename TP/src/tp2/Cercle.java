@@ -24,4 +24,10 @@ public class Cercle extends Forme{
 	public String toString() {
 		return "Cercle [originePoint=" + super.getOriginePoint() + ", rayon=" + this.rayon + "]";
 	}
+
+	@Override
+	public void afficher() {
+		System.out.println("Cercle [originePoint=" + super.getOriginePoint() + ", rayon=" + this.rayon + "]");
+		
+	}
 }

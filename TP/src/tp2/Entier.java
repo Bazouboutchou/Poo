@@ -80,4 +80,18 @@ public class Entier extends Structure {
 		str += "taille = " + this.size + " taille courante = " + this.current_size;
 		return str;
 	}
+	@Override
+	public void afficher() {
+		String str = "";
+		if (this.current_size > 0) {
+			str = "[";
+			for (int i = 0; i < this.current_size; ++i) {
+				str += this.data[i] + " ";
+			}
+			str += "]";
+		} 
+		str += "taille = " + this.size + " taille courante = " + this.current_size;
+		System.out.println(str);
+		
+	}
 }
