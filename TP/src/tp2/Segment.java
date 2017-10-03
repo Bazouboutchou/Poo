@@ -1,27 +1,27 @@
 package tp2;
 
 public class Segment extends Forme{
-	private Point originPoint;
+	//private Point originePoint;
 	private Point finalPoint;
 	
-	public Segment(Point originPoint, Point finalPoint) {
-		super();
-		this.originPoint = originPoint;
+	public Segment(Point originePoint, Point finalPoint) {
+		super(originePoint);
+		//this.originePoint = originePoint;
 		this.finalPoint = finalPoint;
 	}
 	
 	public void dessiner (PileTransformation pile){
 		System.out.println("Dessiner Segment");
-		System.out.println("origine : " + this.originPoint.additionner(pile.getTransfoCourante()));
+		System.out.println("origine : " + super.getOriginePoint().additionner(pile.getTransfoCourante()));
 		System.out.println("final : " + this.finalPoint.additionner(pile.getTransfoCourante()));
 	}
-	public void deplacer(Point point){
-		this.originPoint = this.originPoint.additionner(point);
+	public void deplacerSpecifique(Point point){
+		//this.originePoint = this.originePoint.additionner(point);
 		this.finalPoint = this.finalPoint.additionner(point);
 	}
 
 	@Override
 	public String toString() {
-		return "Segment [originPoint=" + originPoint + ", finalPoint=" + finalPoint + "]";
+		return "Segment [originePoint=" + super.getOriginePoint() + ", finalPoint=" + this.finalPoint + "]";
 	}
 }

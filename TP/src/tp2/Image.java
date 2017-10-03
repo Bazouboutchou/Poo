@@ -7,22 +7,22 @@ public class Image extends Forme {
 	private Forme []formes;
 	private int taille;
 	private int nbFormes;
-	private Point originePoint;
+	//private Point originePoint;
 	
 	
 	public Image(int taille) {
-		super();
+		super(new Point());
 		this.taille = taille;
 		this.nbFormes = 0;
 		this.formes = new Forme[this.taille];
-		this.originePoint = new Point();
+		//this.originePoint = new Point();
 	}
 
 	public Image(int taille, Point originePoint) {
-		super();
+		super(originePoint);
 		this.taille = taille;
 		this.nbFormes = 0;
-		this.originePoint = originePoint;
+		//this.originePoint = originePoint;
 		this.formes = new Forme[this.taille];
 	}
 	
@@ -37,7 +37,7 @@ public class Image extends Forme {
 	
 	@Override
 	public void dessiner(PileTransformation pile) {
-		System.out.println("Image " + this.originePoint.additionner(pile.getTransfoCourante()));
+		System.out.println("Image " + super.getOriginePoint().additionner(pile.getTransfoCourante()));
 		for (Forme f : this.formes){
 			if (f != null)
 				f.dessiner(pile);			
@@ -45,8 +45,8 @@ public class Image extends Forme {
 	}
 
 	@Override
-	public void deplacer(Point point) {
-		this.originePoint = this.originePoint.additionner(point);
+	public void deplacerSpecifique(Point point) {
+		//this.originePoint = this.originePoint.additionner(point);
 		for (Forme f : this.formes){
 			if (f != null)
 				f.deplacer(point);					
@@ -55,7 +55,7 @@ public class Image extends Forme {
 
 	@Override
 	public String toString() {
-		return "Image [formes=" + Arrays.toString(formes) + ", originePoint=" + originePoint + "]";
+		return "Image [formes=" + Arrays.toString(this.formes) + ", originePoint=" + super.getOriginePoint() + "]";
 	}
 	
 	
