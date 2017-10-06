@@ -94,4 +94,13 @@ public class Entier extends Structure {
 		System.out.println(str);
 		
 	}
+	@Override
+	public void compacter(int nbElement) {
+		if (this.current_size > nbElement){
+			this.current_size = this.current_size - nbElement;
+		}
+		else{
+			this.current_size = 0; 			
+		}
+	}
 }

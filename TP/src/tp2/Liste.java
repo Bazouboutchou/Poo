@@ -1,6 +1,6 @@
 package tp2;
 
-public class Liste extends Structure {
+public class Liste extends Structure implements Cloneable {
 	
 	private Maillon tete;
 	
@@ -72,6 +72,22 @@ public class Liste extends Structure {
 		System.out.println(str);
 		
 	}
+	@Override
+	public void compacter(int nbElement) {
+		for (int i = 0; i < nbElement; ++i){
+			supprimer(this.tete.getElem());
+		}
+	}
 	
+	@Override	
+	public Object clone() throws CloneNotSupportedException {   
+		Liste copie = (Liste)super.clone();
+		
+		copie.setTete((Maillon)this.tete.clone());
+		return copie;
+	}
+	public void setTete(Maillon tete) {
+		this.tete = tete;
+	}
 	
 }

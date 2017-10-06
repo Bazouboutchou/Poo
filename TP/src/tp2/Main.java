@@ -1,5 +1,10 @@
 package tp2;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Main {
 
 	public static void testPoint (){
@@ -154,28 +159,115 @@ public class Main {
 		System.out.println(structures[1]);
 	}
 	
+	/* La liaison dynamique et le polymorphisme marche tres bien meme 
+	 * avec des classe tres diferentes
+	 */
 	public static void testAffichable(){
 		System.out.println("********* Test Affichable **************");
-		Structure structures[] = new Structure [2];
-		structures[0] = new Entier(10);
-		structures[1] = new Liste ();
-		
+		Affichable affichable[] = new Affichable [2];
+		Structure stru = new Entier (10);
 		for (int i = 0; i < 10; ++i){
-			structures[0].inserer(i);
-			structures[1].inserer(i);
+			stru.inserer(i);
 		}
-		structures[0].afficher();
-		structures[1].afficher();
 		
-		Forme forme [] = new Forme [3];
-		forme[0] = new Segment(new Point (), new Point(1,1));
-		forme[1] = new Cercle(new Point(1,1), 5);
-		forme[2] = new Image(0);
-		forme[0].afficher();
-		forme[1].afficher();
-		forme[2].afficher();
+		Forme forme = new Cercle(new Point(1,1), 5);		
+		affichable[0] = stru;
+		affichable[1] = forme;
 		
+		for (Affichable a : affichable) {
+			a.afficher();
+		}
 	}
+	
+	public static void testCompactable(){
+		System.out.println("********** Test Compactable *********");
+		Compactable compact[] = new Compactable [3];
+		Entier entier = new Entier(10);
+		Liste liste = new Liste();
+		Image image = new Image (2);
+		for (int i = 0; i < 10; ++i){
+			entier.inserer(i);
+			liste.inserer(i);
+		}
+		image.ajouter(new Segment (new Point (1,1), new Point (2,2)));
+		image.ajouter(new Cercle (new Point (1,1), 5));
+		
+		compact[0] = entier;
+		compact[1] = liste;
+		compact[2] = image;
+		System.out.println("Avant : " + compact[0]);
+		System.out.println("Avant : " + compact[1]);
+		System.out.println("Avant : " + compact[2]);
+		
+		for (Compactable compactable : compact) {
+			compactable.compacter(2);
+		}
+		
+		System.out.println("Apres : " + compact[0]);
+		System.out.println("Apres : " + compact[1]);
+		System.out.println("Apres : " + compact[2]);
+
+	}
+	
+	public static void testComparable(){
+		System.out.println("********** Test Comparable *********");
+		Image images [] = new Image [4];
+		images[0] = new Image<>(15);
+		images[1] = new Image<>(19);
+		images[2] = new Image<>(1);
+		images[3] = new Image<>(20);	
+		
+		images[0].ajouter(new Segment(new Point(), new Point()));
+		images[0].ajouter(new Segment(new Point(), new Point()));
+		
+		images[1].ajouter(new Segment(new Point(), new Point()));
+		images[1].ajouter(new Segment(new Point(), new Point()));
+		images[1].ajouter(new Segment(new Point(), new Point()));
+		images[1].ajouter(new Segment(new Point(), new Point()));
+		
+		images[2].ajouter(new Segment(new Point(), new Point()));
+		
+		images[3].ajouter(new Segment(new Point(), new Point()));
+		images[3].ajouter(new Segment(new Point(), new Point()));
+		images[3].ajouter(new Segment(new Point(), new Point()));
+		System.out.println("Avant : ");
+
+		for (Image image : images) {
+			System.out.println(image);
+		}
+		Arrays.sort(images);
+		
+		System.out.println("Apres : ");
+		for (Image image : images) {
+			System.out.println(image);
+		}
+	}
+	
+	public static void testComparator(){
+		System.out.println("********** Test Comparator *********");
+		ArrayList <Image> images = new ArrayList<>();
+		images.add(new Image<>(15, new Point(10, 10)));
+		images.add(new Image<>(19, new Point(11, 11)));
+		images.add(new Image<>(1, new Point(5, 5)));
+		
+		Image maximum = Collections.max(images, new Image(1));
+		System.out.println(maximum);
+	}
+	
+	public static void testCloneable(){
+		Liste liste = new Liste();
+		for (int i = 0; i < 10; ++i){
+			liste.inserer(i);
+		}
+		
+		try {
+			Liste liste2 = (Liste) liste.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		testPoint();
 		testTransformations ();
@@ -186,6 +278,10 @@ public class Main {
 		testQuestion6();
 		testStructure ();
 		testAffichable();
+		testCompactable();
+		testComparable();
+		testComparator();
+		testCloneable();
 	}
 
 }

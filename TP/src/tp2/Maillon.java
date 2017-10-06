@@ -1,6 +1,6 @@
 package tp2;
 
-public class Maillon {
+public class Maillon implements Cloneable {
 	private int     elem;
 	private Maillon suiv;
 	
@@ -23,5 +23,13 @@ public class Maillon {
 
 	public void setSuiv(Maillon suiv) {
 		this.suiv = suiv;
+	}
+	
+	@Override	
+	public Object clone() throws CloneNotSupportedException {   
+		Maillon copie = (Maillon)super.clone();
+		copie.setElem(this.elem);
+		copie.setSuiv((Maillon)this.suiv.clone());
+		return copie;
 	}
 }
