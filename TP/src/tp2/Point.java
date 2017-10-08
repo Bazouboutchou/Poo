@@ -1,6 +1,6 @@
 package tp2;
 
-public class Point {
+public class Point implements Cloneable{
 	private int x;
 	private int y;
 	
@@ -38,5 +38,12 @@ public class Point {
 		this.y = y;
 	}
 	
-	
+	@Override	
+	public Object clone() throws CloneNotSupportedException {   
+		Point copie = (Point)super.clone();
+		copie.setX(this.x);
+		copie.setY(this.y);
+		
+		return copie;
+	}
 }

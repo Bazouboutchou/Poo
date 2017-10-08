@@ -255,13 +255,23 @@ public class Main {
 	}
 	
 	public static void testCloneable(){
+		System.out.println("*********Test Cloneable***********");
+		
 		Liste liste = new Liste();
+		Segment seg = new Segment(new Point (1,1), new Point(2,2));
 		for (int i = 0; i < 10; ++i){
 			liste.inserer(i);
 		}
 		
 		try {
 			Liste liste2 = (Liste) liste.clone();
+			System.out.println("Liste normal : " + liste);
+			System.out.println("Liste clone : " + liste2);
+			
+			Segment seg2 = (Segment) seg.clone();
+			System.out.println("Segment normal : " + seg);
+			System.out.println("Segment clone : " + seg2);
+			
 		} catch (CloneNotSupportedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

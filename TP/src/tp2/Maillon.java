@@ -29,7 +29,9 @@ public class Maillon implements Cloneable {
 	public Object clone() throws CloneNotSupportedException {   
 		Maillon copie = (Maillon)super.clone();
 		copie.setElem(this.elem);
-		copie.setSuiv((Maillon)this.suiv.clone());
+		if (this.suiv != null){
+			copie.setSuiv((Maillon)this.suiv.clone());			
+		}
 		return copie;
 	}
 }

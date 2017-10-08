@@ -1,6 +1,6 @@
 package tp2;
 
-public class Segment extends Forme{
+public class Segment extends Forme implements Cloneable{
 	//private Point originePoint;
 	private Point finalPoint;
 	
@@ -29,4 +29,17 @@ public class Segment extends Forme{
 	public void afficher() {
 		System.out.println("Segment [originePoint=" + super.getOriginePoint() + ", finalPoint=" + this.finalPoint + "]");	
 	}
+	
+	@Override	
+	public Object clone() throws CloneNotSupportedException {   
+		Segment copie = (Segment)super.clone();
+		setFinalPoint((Point)this.finalPoint.clone());
+		super.setOriginePoint(((Point)(super.getOriginePoint()).clone()));
+		return copie;
+	}
+
+	public void setFinalPoint(Point finalPoint) {
+		this.finalPoint = finalPoint;
+	}
+
 }
