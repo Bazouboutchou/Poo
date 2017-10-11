@@ -278,6 +278,20 @@ public class Main {
 		}
 	}
 	
+	public static void testSuiteBits(){
+		System.out.println("***********Suite Bits***************");
+		Suitebits bits = new Suitebits(3);
+		bits.inserer(30);
+		bits.afficher();
+		bits.inserer(120);
+		bits.afficher();
+		bits.supprimer(30);
+		bits.afficher();
+		
+		bits.compacter(3);
+		bits.inserer(30);
+	}
+	
 	public static void main(String[] args) {
 		testPoint();
 		testTransformations ();
@@ -292,6 +306,7 @@ public class Main {
 		testComparable();
 		testComparator();
 		testCloneable();
+		testSuiteBits();
 	}
 
 }
