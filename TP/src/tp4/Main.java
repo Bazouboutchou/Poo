@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void testInspection(){
+	public static void testIntrospection(){
 		System.out.println("**************Test testInspection****************");
 		System.out.println("**************A****************");
 		Scanner sc = new Scanner(System.in);
@@ -80,7 +80,10 @@ public class Main {
 		name = sc.next();
 		System.out.println(p);
 		try {
-			Point.class.getField(name).set(p, 0);
+			
+			Field f = Point.class.getDeclaredField(name);
+			f.setAccessible(true);
+			f.setInt(p, 0);
 		} catch (IllegalArgumentException | IllegalAccessException
 				| NoSuchFieldException | SecurityException e) {
 			// TODO Auto-generated catch block
@@ -93,8 +96,13 @@ public class Main {
 		Constructor<Entier> co;
 		try {
 			co = Entier.class.getConstructor(int.class);
-			Entier a = co.newInstance(10);
 			
+			Entier a = co.newInstance(entier.getSize());
+			
+			a.setData(entier.getData());
+			a.setCurrent_size(entier.getCurrent_size());
+
+			System.out.println(a);
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,7 +126,7 @@ public class Main {
 	}
 
 	public static void main (String[] args){
-		testInspection();
+		testIntrospection();
 		
 	}
 

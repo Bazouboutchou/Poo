@@ -79,6 +79,30 @@ public class Entier {
 		return str;
 	}
 	
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public int[] getData() {
+		return data;
+	}
+
+	public void setData(int[] data) {
+		this.data = data;
+	}
+
+	public int getCurrent_size() {
+		return current_size;
+	}
+
+	public void setCurrent_size(int current_size) {
+		this.current_size = current_size;
+	}
+
 	public int getTabi(int i) throws ExceptionForte{
 		if (i > this.current_size){
 			throw new HorsLimites(i, current_size);
