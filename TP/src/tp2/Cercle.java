@@ -1,5 +1,6 @@
 package tp2;
-
+import tp4.Annee;
+@Annee(annee = 2010)
 public class Cercle extends Forme{
 	//private Point originePoint; 
 	private int rayon;

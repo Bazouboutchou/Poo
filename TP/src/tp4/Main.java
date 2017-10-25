@@ -1,5 +1,6 @@
 package tp4;
 
+import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -130,15 +131,39 @@ public class Main {
 	public static void testProxy (){
 		Object []proxys = new Object [1000];
 		for (int i = 0; i < 1000; ++i){
-			proxys[i] = Proxy.newProxyInstance(null,new Class<?>[]{Comparable.class},new MonIH(i));
+			proxys[i] = Proxy.newProxyInstance(null,new Class<?>[]{Comparable.class},new MonIH(i+1));
 
 		}
 		
-		Arrays.binarySearch(proxys, 13);
+		System.out.println("Indice = " + Arrays.binarySearch(proxys, 13));
 	}
+	public static void 	testAnnotation(){
+		File f = new File ("src/tp2");
+		
+		String [] ts = f.list();
+
+		Class <?> c; 
+		for (String name : ts) {
+			try {
+				c = Class.forName("tp2."+name.split("\\.")[0]);
+				if (c.isAnnotationPresent(Annee.class)){
+					Annee annee = c.getAnnotation(Annee.class);
+					if (annee.annee() > 2009){
+						System.out.println(name);
+					}
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	
 	public static void main (String[] args){
 		//testIntrospection();
-		testProxy();
+		//testProxy();
+		testAnnotation();
 	}
 
 

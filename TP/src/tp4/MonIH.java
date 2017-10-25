@@ -14,18 +14,13 @@ public class MonIH implements InvocationHandler{
 	@Override
 	public Object invoke(Object arg0, Method arg1, Object[] arg2)
 			throws Throwable {
-		System.out.println("Méthode : " + arg1.getName());
-		System.out.print("Arguments : ");
-
-		for (Object object : arg2) {
-			System.out.print(object + " ");
-
-		}
-		System.out.println();
-		Object res = arg1.invoke(this.obj, arg2);
-		System.out.println("Resultat : " + res);
+		System.out.println("Methode : " + arg1.getName());
+		System.out.println("Arguments : " + arg2[0]);
 		System.out.println("Valeur : " + this.obj);
-		
+
+		Object res = arg1.invoke(this.obj, arg2[0]);
+		System.out.println("Resultat Compare To: " + res);
+		System.out.println();
 		return res;
 	}
 

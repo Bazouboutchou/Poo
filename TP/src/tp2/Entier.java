@@ -1,5 +1,6 @@
 package tp2;
-
+import tp4.Annee;
+@Annee(annee=2015)
 public class Entier extends Structure {
 	
 	private int data[];
