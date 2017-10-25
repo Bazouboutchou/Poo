@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -124,10 +126,19 @@ public class Main {
 		}
 
 	}
+	
+	public static void testProxy (){
+		Object []proxys = new Object [1000];
+		for (int i = 0; i < 1000; ++i){
+			proxys[i] = Proxy.newProxyInstance(null,new Class<?>[]{Comparable.class},new MonIH(i));
 
-	public static void main (String[] args){
-		testIntrospection();
+		}
 		
+		Arrays.binarySearch(proxys, 13);
+	}
+	public static void main (String[] args){
+		//testIntrospection();
+		testProxy();
 	}
 
 
