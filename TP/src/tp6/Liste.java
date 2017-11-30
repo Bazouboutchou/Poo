@@ -17,6 +17,7 @@ public class Liste implements MonIterable{
 		} else {
 			System.out.println("l'element :" + elem +"  existe deja dans la liste");
 		}
+		
 	}
 	
 	public boolean existeDeja (int elem) {
@@ -86,13 +87,14 @@ public class Liste implements MonIterable{
 		}
 
 		@Override
-		public boolean fini() {
-			return (this.index.getSuiv() == null);
+		public boolean fin() {
+			return (this.index == null);
 		}
 
 		@Override
 		public void insere(int i) {
-			this.index.setSuiv(new Maillon(i, this.index.getSuiv()));
+			Liste.this.inserer(i);
+			this.index = tete;
 		}
 
 		@Override
@@ -101,7 +103,7 @@ public class Liste implements MonIterable{
 		}
 		@Override
 		public String toString() {
-			return "Maillon : " + this.index;
+			return "Maillon : " + this.courant();
 		}
 	}
 	

@@ -106,7 +106,7 @@ public class EntIterator implements BidirIterator, SupIterator{
 		}
 	
 		@Override
-		public boolean fini() {
+		public boolean fin() {
 			return (this.index == current_size);
 		}
 	
@@ -114,7 +114,7 @@ public class EntIterator implements BidirIterator, SupIterator{
 		@Override
 		public void supprime() {
 			supprimer(data[this.index]);
-			System.out.println(index);
+			
 			--this.index;
 			
 		}
@@ -125,7 +125,7 @@ public class EntIterator implements BidirIterator, SupIterator{
 		}
 		@Override
 		public String toString() {
-			return "Entier : " + data[this.index];
+			return "Entier : " + this.courant();
 		}
 	};
 	
