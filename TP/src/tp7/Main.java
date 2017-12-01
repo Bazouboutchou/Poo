@@ -1,9 +1,11 @@
 package tp7;
 
 import java.util.ArrayList;
+
 import java.util.Stack;
 
-import tp6.Entier.EntIterator;
+import javax.swing.text.html.Option;
+
 
 public class Main {
 	
@@ -40,10 +42,49 @@ public class Main {
 		singleton.inserer(1);
 		singleton.inserer(2);
 		System.out.println(singleton);
+		System.out.println();
 	}
+	
+	private static void observater() {
+		Point point = new Point();
+		Forme forme = new Cercle (new Point(), 1);
+		point.addObserver(forme);
+		
+		System.out.println("Point : " + point);
+		System.out.println("Forme : " + forme);
+		
+		point.setX(1);
+		
+		System.out.println("Point : " + point);
+		System.out.println("Forme : " + forme);
+		
+		point.setY(1);
+		
+		System.out.println("Point : " + point);
+		System.out.println("Forme : " + forme);
+		
+	}
+	
+	private static void decorateur() {
+		System.out.println("*************Decorateur****************");
+		Voiture voiture = new Voiture ("Toyota", 5);
+		System.out.println(voiture);
+		
+		DecorateurVoiture decorateur1 = new Option1(voiture);
+		System.out.println(decorateur1);
+		
+		DecorateurVoiture decorateur2 = new Option1(new Option2(voiture));
+		System.out.println(decorateur2);
+		
+	}
+	
 	public static void main (String[] args){
 		commande();
 		adaptateur();
 		singleton();
+		observater();
+		decorateur();
 	}
+
+
 }
