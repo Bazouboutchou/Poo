@@ -25,15 +25,22 @@ public class Main {
 		Fenetre fenetre1 = new Fenetre();
 		fenetre1.fenetre1();
 		fenetre1.toFront();
-		fenetre1.setResizable(false);
-		fenetre1.setVisible(true);
 		
 		fenetre1.add(new Dessin());
+		fenetre1.setVisible(true);
+	}
+	public static void exo3(){
+		Fenetre fenetre = new Fenetre();
+		fenetre.fenetre2();
+		fenetre.toFront();
+		fenetre.add(new FonteImage());
+		fenetre.setVisible(true);
 	}
 	
 	public static void main (String[] args){
-		//exo1();
-		exo2();
+		exo1();
+		//exo2();
+		//exo3();
 	}
 
 
