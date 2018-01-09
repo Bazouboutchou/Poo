@@ -18,8 +18,8 @@ public class Carre extends Component {
 	public Carre(int taille, int x, int y) {
 		super();
 		this.taille = taille;
-		this.x = x;
-		this.y = y;
+		this.x = x - taille/2;
+		this.y = y - taille/2;
 	} 
 	
 	
@@ -41,5 +41,9 @@ public class Carre extends Component {
 	 public void setY(int y) {
 		 this.y = y;
 	 }
-
+	 
+	 public int getTaille(){
+		 return this.taille;
+	 }
+	 
 }

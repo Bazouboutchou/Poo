@@ -26,24 +26,39 @@ public class DessinCarre extends JPanel{
 	
 	
 	private class MouseEventDraw extends MouseAdapter{
+		boolean existeDeja = false;
 		@Override
-		public void mousePressed(MouseEvent e) {
-			boolean existeDeja = false;
+		public void mouseClicked(MouseEvent e) {
+			
 			for (Carre carre : carres) {
 				if (carre.contains(e.getX(), e.getY()) && e.getClickCount() == 1) {
 					existeDeja = true;
 					break;
 				} 
-				if (carre.contains(e.getX(), e.getY()) && e.getClickCount() == 2) {
-					carres.remove(carre);
-					existeDeja = true;
-					break;
-				}
-					
+
 			}
-			if (!existeDeja){
+			if (!existeDeja && e.getClickCount() == 1){
 				Carre car = new Carre(taille, e.getX(), e.getY());
 				carres.add(car);				
+			}		
+			repaint();
+			
+		} 
+
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+			if (existeDeja){
+				for (Carre carre : carres) {
+
+					if (carre.contains(e.getX(), e.getY()) && e.getClickCount() == 2) {
+						carres.remove(carre);
+						existeDeja = false;
+						break;
+					}
+						
+				}
+				
 			}
 			
 			repaint();
@@ -56,6 +71,7 @@ public class DessinCarre extends JPanel{
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			boolean isIn = false;
+			System.out.println("coucou");
 			for (Carre carre : carres) {
 				if (carre.contains(e.getX(), e.getY()) ) {
 					setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
@@ -74,9 +90,9 @@ public class DessinCarre extends JPanel{
 		public void mouseDragged(MouseEvent e) {
 
 			for (Carre carre : carres) {
-				if (carre.contains(e.getX()+10, e.getY()+10)) {
-					carre.setX(e.getX());
-					carre.setY(e.getY());
+				if (carre.contains(e.getX(), e.getY())) {
+					carre.setX(e.getX() - carre.getTaille()/2); // on se place au milieu 
+					carre.setY(e.getY() - carre.getTaille()/2);
 					break;
 				} 
 				
