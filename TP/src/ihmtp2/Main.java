@@ -39,8 +39,8 @@ public class Main {
 		//exo1_2();
 		//exo3();
 		//exo4();
-		//exo5();
-		exo6();
+		exo5();
+		//exo6();
 		
 	}
 

@@ -34,7 +34,9 @@ public class DessinCarre extends JPanel{
 				if (carre.contains(e.getX(), e.getY()) && e.getClickCount() == 1) {
 					existeDeja = true;
 					break;
-				} 
+				} else if (!carre.contains(e.getX(), e.getY()) && e.getClickCount() == 1){
+					existeDeja = false;
+				}
 
 			}
 			if (!existeDeja && e.getClickCount() == 1){
@@ -71,7 +73,6 @@ public class DessinCarre extends JPanel{
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			boolean isIn = false;
-			System.out.println("coucou");
 			for (Carre carre : carres) {
 				if (carre.contains(e.getX(), e.getY()) ) {
 					setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));

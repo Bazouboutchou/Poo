@@ -27,9 +27,9 @@ public class FenetrePrincipal extends JFrame{
 		btFermer = new JButton("Fermer");
 		
 		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		int height = (int)dimension.getHeight()/4;
-		int width  = (int)dimension.getWidth()/4;
-		this.setLocation((int)dimension.getWidth(), (int)dimension.getHeight());
+		int height = (int)dimension.getHeight()/2;
+		int width  = (int)dimension.getWidth()/2;
+		this.setLocation(width, 0);
 		this.x = 10;
 		this.y = 10;
 		
@@ -40,20 +40,20 @@ public class FenetrePrincipal extends JFrame{
 		add(btCreer);		
 		add(btFermer);
 		btCreer.setBackground(Color.GREEN);
-		btCreer.addMouseListener(new MouseCreerListener());
+		btCreer.addActionListener(new AcitionListenerCreer());
 		btFermer.setBackground(Color.RED);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
-	private class MouseCreerListener extends MouseAdapter{
-		public void mouseClicked(MouseEvent event) {
+	private class AcitionListenerCreer implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent event) {
 			FenetreSecondaire f = new FenetreSecondaire(x, y, numero);
 			btFermer.addActionListener(f.new MyActionListener());
 			++numero;
 			x += 50;
-			y += 50;
-			
+			y += 50;			
 		}
 	}
 
