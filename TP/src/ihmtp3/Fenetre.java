@@ -11,10 +11,7 @@ public class Fenetre extends JFrame {
 		
 		setTitle("TP3 Java");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		Dimension dim = tk.getScreenSize();
-		setSize((int) (dim.getWidth()/6), (int) (dim.getHeight()/3));
+		setSize(300, 350);
 		setLocationRelativeTo(null);
 		
 		

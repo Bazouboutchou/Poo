@@ -27,7 +27,6 @@ public class Horloge extends JPanel {
 	public Horloge (){
 		this.changeHeure(0);
 		this.changeMinute(0);
-		
 	}
 	
 	public void changeHeure(int heure){
